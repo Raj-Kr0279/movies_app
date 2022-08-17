@@ -28,6 +28,9 @@ body {
   border: none;
   .nav-link {
     border: none;
+    &:active{
+      color: #f55d5d;
+    }
   }
 }
 ul {
@@ -94,7 +97,17 @@ a {
     text-align: center;
   }
 }
-
+.mv-search{
+  padding: 0.4em;
+  text-align: center;
+  background: #ffffffc7;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 22px -3px red;
+  &:focus-visible{
+    outline: none !important;
+  }
+}
 /*
 *
 * ==========================================

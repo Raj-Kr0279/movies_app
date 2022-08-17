@@ -5,13 +5,30 @@ function Television() {
   const IMG_MAIN_URL = "https://image.tmdb.org/t/p/w500/";
 
   const [tv, setTv] = useState([]);
+  const [SearchT, setSearchT] = useState([]);
+  const setInputValue = (e) => {
+    setSearchT(e.target.value);
+    // console.log(SearchT);
+  };
+  const searchTv = (event) => {
+    event.preventDefault();
+    fetch(
+      `https://api.themoviedb.org/3/search/tv?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1&query=${SearchT}&include_adult=false`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+    setTv(data.results)
+        
+      })
+      .catch((error) => console.log(error));
+  };
   const fetchPopularTv = () => {
     fetch(
       "https://api.themoviedb.org/3/tv/popular?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
+        // console.log(data.results);
         setTv(data.results);
       })
       .catch((err) => console.log(err));
@@ -26,7 +43,7 @@ function Television() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
+        // console.log(data.results);
         setTv(data.results);
       })
       .catch((err) => console.log(err));
@@ -37,7 +54,7 @@ function Television() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
+        // console.log(data.results);
         setTv(data.results);
       })
       .catch((err) => console.log(err));
@@ -53,7 +70,8 @@ function Television() {
           padding: "0.3em 1em",
         }}
       >
-        <ul className="nav nav-tabs flex-column flex-sm-row d-flex">
+        <div className="row justify-content-between">
+        <ul className="nav nav-tabs flex-column flex-sm-row d-flex" style={{ width: "auto" }}>
           <li className="nav-item">
             <a className="nav-link" onClick={fetchPopularTv}>
               Popular
@@ -70,6 +88,17 @@ function Television() {
             </a>
           </li>
         </ul>
+        <form action="" style={{ width: "auto" }} onSubmit={searchTv}>
+          <input
+            type="text"
+            onChange={setInputValue}
+            value={SearchT}
+            placeholder="Search tv shows..."
+            className="mv-search"
+            style={{width: "auto"}}
+          />
+        </form>
+      </div>
       </div>
 
       <div className="container">

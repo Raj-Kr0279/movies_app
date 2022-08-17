@@ -1,18 +1,37 @@
 import { React, useState, useEffect } from "react";
 import Header from "./Header";
+import ReactPaginate from "react-paginate";
+import { Audio } from  'react-loader-spinner'
 
 function Movies() {
   const IMG_MAIN_URL = "https://image.tmdb.org/t/p/w1280/";
-
+  const [searchM, setSearchM]= useState([]);
+ const[isLoaded, setIsLoaded] = useState(false);
   const [Movies, setMovies] = useState([]);
+  const setInputValue = (e)=>{
+    setSearchM(e.target.value);
+    // console.log(searchM);
+  }
+  const searchMovies = (event)=>{
+event.preventDefault();
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&query=${searchM}&page=1&include_adult=false`)
+      .then(response =>response.json())
+      .then((data) => {
+      setMovies(data.results)
+      setIsLoaded(true)
+    })
+      .catch(error => console.log(error));
+    }
+
   const fetchPopularMovies = () => {
     fetch(
       " https://api.themoviedb.org/3/movie/popular?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setMovies(data.results);
+        // console.log(data);
+        setMovies(data.results)
+        setIsLoaded(true)
       })
       .catch((err) => console.log(err));
   };
@@ -26,8 +45,9 @@ function Movies() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
+        // console.log(data.results);
         setMovies(data.results);
+        setIsLoaded(true)
       })
       .catch((err) => console.log(err));
   };
@@ -37,8 +57,9 @@ function Movies() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
+        // console.log(data.results);
         setMovies(data.results);
+        setIsLoaded(true)
       })
       .catch((err) => console.log(err));
   };
@@ -48,8 +69,9 @@ function Movies() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
+        // console.log(data.results);
         setMovies(data.results);
+        setIsLoaded(true)
       })
       .catch((err) => console.log(err));
   };
@@ -59,7 +81,8 @@ function Movies() {
       <Header />
       <div className="container mt-3" style={{background: 'linear-gradient(45deg, #9f0404, transparent)',
     padding: '0.3em 1em'}}>
-    <ul className="nav nav-tabs flex-column flex-sm-row d-flex">
+      <div className="row justify-content-between">
+    <ul className="nav nav-tabs flex-column flex-sm-row d-flex" style={{width: 'auto'}}>
       <li className="nav-item">
         <a className="nav-link" onClick={fetchPopularMovies}>
           Popular
@@ -81,11 +104,16 @@ function Movies() {
         </a>
       </li>
     </ul>
+      
+        <form action="" style={{width: "auto"}} onSubmit={searchMovies}>
+          <input type="text" onChange={setInputValue} value={searchM} placeholder="Search movies..." className="mv-search"/>
+        </form>
+        </div>
     </div>
 
       <div className="container">
         <div className="row">
-          {Movies.map((movie) => {
+          {isLoaded ? (Movies.map((movie) => {
             return (
               <>
                 <div className="movie_card" id="tomb">
@@ -108,12 +136,9 @@ function Movies() {
                     </div>
                     <div className="movie_social">
                       <ul>
-                        <li></li>
+                        
                         <li>
-                          <svg data-testid="DeleteIcon"></svg>
-                        </li>
-                        <li>
-                          <i className="material-icons">chat_bubble</i>
+                          <a href="" onClick={()=>{console.log("clicked")}}>Details</a>
                         </li>
                       </ul>
                     </div>
@@ -129,7 +154,15 @@ function Movies() {
                 </div>
               </>
             );
-          })}
+          })): <Audio
+          height = "80"
+          width = "80"
+          radius = "9"
+          color = 'green'
+          ariaLabel = 'three-dots-loading'     
+          wrapperStyle
+          wrapperClass
+        />}
         </div>
       </div>
     </>
