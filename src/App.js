@@ -9,7 +9,7 @@ function App() {
   return (
   <>
       <Routes>
-        <Route path="https://Raj-Kr0279.github.io/movies_app" element={<Movies />} />
+        <Route path="/" element={<Movies />} />
         <Route path="/Television" element={<Television />} />
       </Routes>
         <Footer/>
