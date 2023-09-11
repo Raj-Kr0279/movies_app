@@ -14,7 +14,7 @@ function Movies() {
   }
   const searchMovies = (event)=>{
 event.preventDefault();
-  fetch(`https://api.themoviedb.org/3/search/movie?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&query=${searchM}&page=1&include_adult=false`)
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&query=${searchM}&page=1&include_adult=false`)
       .then(response =>response.json())
       .then((data) => {
       setMovies(data.results)
@@ -25,7 +25,7 @@ event.preventDefault();
 
   const fetchPopularMovies = () => {
     fetch(
-      " https://api.themoviedb.org/3/movie/popular?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -41,7 +41,7 @@ event.preventDefault();
 
   const fetchNowPlayingMovies = () => {
     fetch(
-      " https://api.themoviedb.org/3/movie/now_playing?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -53,7 +53,7 @@ event.preventDefault();
   };
   const fetchTopRatedMovies = () => {
     fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -65,7 +65,7 @@ event.preventDefault();
   };
   const fetchUpcomingMovies = () => {
     fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {

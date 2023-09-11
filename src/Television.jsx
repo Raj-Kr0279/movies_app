@@ -13,7 +13,7 @@ function Television() {
   const searchTv = (event) => {
     event.preventDefault();
     fetch(
-      `https://api.themoviedb.org/3/search/tv?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1&query=${SearchT}&include_adult=false`
+      `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1&query=${SearchT}&include_adult=false`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -24,7 +24,7 @@ function Television() {
   };
   const fetchPopularTv = () => {
     fetch(
-      "https://api.themoviedb.org/3/tv/popular?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
+      `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -39,7 +39,7 @@ function Television() {
 
   const fetchTodayTv = () => {
     fetch(
-      "https://api.themoviedb.org/3/tv/airing_today?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
+      `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -50,7 +50,7 @@ function Television() {
   };
   const fetchTopRatedTv = () => {
     fetch(
-      "https://api.themoviedb.org/3/tv/top_rated?api_key=0e92551729520c9409a827c3aee6f314&language=en-US&page=1"
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
