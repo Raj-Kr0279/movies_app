@@ -1,64 +1,25 @@
-import { React, useState, useEffect } from "react";
-import Header from "./Header";
+import { React, useState, useEffect, useContext } from "react";
+import Header from "./components/Header";
+import { DataContext } from "./context/DataContext";
 
 function Television() {
-  const IMG_MAIN_URL = "https://image.tmdb.org/t/p/w500/";
-
-  const [tv, setTv] = useState([]);
   const [SearchT, setSearchT] = useState([]);
-  const setInputValue = (e) => {
-    setSearchT(e.target.value);
-    // console.log(SearchT);
+
+const { fetchTopRatedTv,fetchTodayTv, fetchPopularTv, searchTv, tv, setTv, IMG_MAIN_URL} = useContext(DataContext)
+
+const setInputValue = (e) => {
+    setSearchT(e, e.target.value);
   };
-  const searchTv = (event) => {
-    event.preventDefault();
-    fetch(
-      `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1&query=${SearchT}&include_adult=false`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-    setTv(data.results)
-        
-      })
-      .catch((error) => console.log(error));
-  };
-  const fetchPopularTv = () => {
-    fetch(
-      `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data.results);
-        setTv(data.results);
-      })
-      .catch((err) => console.log(err));
-  };
+
+
   useEffect(() => {
     fetchPopularTv();
   }, []);
 
-  const fetchTodayTv = () => {
-    fetch(
-      `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data.results);
-        setTv(data.results);
-      })
-      .catch((err) => console.log(err));
-  };
-  const fetchTopRatedTv = () => {
-    fetch(
-      `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_TMDBKEY}&language=en-US&page=1`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data.results);
-        setTv(data.results);
-      })
-      .catch((err) => console.log(err));
-  };
+ const handleSearch = ()=>{
+  searchTv(SearchT)
+ }
+
 
   return (
     <>
@@ -88,10 +49,10 @@ function Television() {
             </a>
           </li>
         </ul>
-        <form action="" style={{ width: "auto" }} onSubmit={searchTv}>
+        <form action="" style={{ width: "auto" }} onSubmit={(e)=> {e.preventDefault(); handleSearch()}}>
           <input
             type="text"
-            onChange={setInputValue}
+            onChange={(e)=> setSearchT(e.target.value)}
             value={SearchT}
             placeholder="Search tv shows..."
             className="mv-search"
@@ -106,16 +67,16 @@ function Television() {
           {tv.map((item) => {
             return (
               <>
-                <div className="movie_card" id="tomb">
+                <div className="movie_card" id="tomb" key={item?.id}>
                   <div className="info_section">
                     <div className="movie_header">
                       <img
-                        alt={item.title}
+                        alt={item?.title}
                         className="locandina"
                         src={IMG_MAIN_URL + item.backdrop_path}
                       />
-                      <h1>{item.original_name}</h1>
-                      <h4>{item.first_air_date}</h4>
+                      <h1>{item?.original_name}</h1>
+                      <h4>{item?.first_air_date}</h4>
                       <span className="minutes">125 min</span>
                       <p className="type">Action, Fantasy</p>
                     </div>
