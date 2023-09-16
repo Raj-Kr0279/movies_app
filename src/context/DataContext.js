@@ -19,7 +19,7 @@ const DataProvider = ({ children }) => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNWUzZjgzMTgyYmE3MTYzZDMyYThmYTQxNWFjYzYyMCIsInN1YiI6IjY1MDVlM2M5NWFhZGM0MDBjN2RkODNjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.s7V5wTi3sihl_nAUE21E8E-O8vTVCOWcMixUEhfx8cU'
+              Authorization: process.env.REACT_APP_AUTHTOKEN
             }
           };
           
