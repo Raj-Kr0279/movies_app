@@ -32,7 +32,8 @@ function Movies() {
       <Header />
       <div className="container mt-3" style={{
         background: 'linear-gradient(45deg, #9f0404, transparent)',
-        padding: '0.3em 1em'
+        padding: '0.3em 1em',
+        borderRadius: "40px"
       }}>
         <div className="row justify-content-between">
           <ul className="nav nav-tabs flex-column flex-sm-row d-flex" style={{ width: 'auto' }}>
@@ -64,13 +65,13 @@ function Movies() {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container list_wrapper">
         <div className="row">
           {isLoaded ? (Movies.map((movie) => {
 
             return (
               <>
-                <div className="movie_card" id="tomb">
+                <Link to="/details" state={{id: movie?.id, tv: false}} className="movie_card" id="tomb">
                   <div className="info_section">
                     {console.log(IMG_MAIN_URL + movie.backdrop_path)}
                     <div className="movie_header">
@@ -90,14 +91,6 @@ function Movies() {
                       <p className="text">{movie.overview}</p>
                     </div>
                     <div className="movie_social">
-                      <ul>
-
-                        <li>
-                          <Link to="/details" state={movie.id}>
-                            <button>Details</button>
-                          </Link>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                   <div
@@ -107,14 +100,14 @@ function Movies() {
                         }) no-repeat center center/cover`,
                     }}
                   ></div>
-                </div>
+                </Link>
               </>
             );
           })) : <Audio
             height="80"
             width="80"
             radius="9"
-            color='green'
+            color='red'
             ariaLabel='three-dots-loading'
             wrapperStyle
             wrapperClass

@@ -1,6 +1,6 @@
 import { React } from "react";
 import { Routes, Route} from "react-router-dom";
-import Television from "./Television";
+import Television from "./components/Television";
 import Movies from "./components/Movies";
 import Footer from "./components/Footer";
 import "./App.scss";
@@ -13,7 +13,7 @@ function App() {
         <DataProvider>
       <Routes>
         <Route path="/" element={<Movies />} />
-        <Route path="/Television" element={<Television />} />
+        <Route path="/tv" element={<Television />} />
         <Route path = "/details" element = {<ItemDetails/>} />
       </Routes>
         <Footer/>

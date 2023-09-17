@@ -1,11 +1,12 @@
 import { React, useState, useEffect, useContext } from "react";
-import Header from "./components/Header";
-import { DataContext } from "./context/DataContext";
+import Header from "./Header";
+import { DataContext } from "../context/DataContext";
+import { Link } from "react-router-dom";
 
 function Television() {
   const [SearchT, setSearchT] = useState([]);
 
-const { fetchTopRatedTv,fetchTodayTv, fetchPopularTv, searchTv, tv, setTv, IMG_MAIN_URL} = useContext(DataContext)
+const { fetchTopRatedTv,fetchTodayTv, fetchPopularTv, searchTv, tv, setTv, IMG_MAIN_URL, tvClick, setTvClick} = useContext(DataContext)
 
 const setInputValue = (e) => {
     setSearchT(e, e.target.value);
@@ -29,6 +30,8 @@ const setInputValue = (e) => {
         style={{
           background: "linear-gradient(45deg, #9f0404, transparent)",
           padding: "0.3em 1em",
+          padding: '0.3em 1em',
+          borderRadius: "40px"
         }}
       >
         <div className="row justify-content-between">
@@ -62,12 +65,12 @@ const setInputValue = (e) => {
       </div>
       </div>
 
-      <div className="container">
+      <div className="container list_wrapper">
         <div className="row">
           {tv.map((item) => {
             return (
               <>
-                <div className="movie_card" id="tomb" key={item?.id}>
+                <Link to = "/details" state = {{id: item?.id, tv: true}}   className="movie_card" id="tomb" key={item?.id}>
                   <div className="info_section">
                     <div className="movie_header">
                       <img
@@ -103,7 +106,7 @@ const setInputValue = (e) => {
                       }) no-repeat center center/cover`,
                     }}
                   ></div>
-                </div>
+                </Link>
               </>
             );
           })}
