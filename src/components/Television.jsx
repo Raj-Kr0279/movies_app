@@ -2,6 +2,7 @@ import { React, useState, useEffect, useContext } from "react";
 import Header from "./Header";
 import { DataContext } from "../context/DataContext";
 import { Link } from "react-router-dom";
+import { motion as tvMotion } from "framer-motion";
 
 function Television() {
   const [SearchT, setSearchT] = useState([]);
@@ -70,6 +71,11 @@ const setInputValue = (e) => {
           {tv.map((item) => {
             return (
               <>
+               <tvMotion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+               >
                 <Link to = "/details" state = {{id: item?.id, tv: true}}   className="movie_card" id="tomb" key={item?.id}>
                   <div className="info_section">
                     <div className="movie_header">
@@ -107,6 +113,7 @@ const setInputValue = (e) => {
                     }}
                   ></div>
                 </Link>
+                </tvMotion.div>
               </>
             );
           })}

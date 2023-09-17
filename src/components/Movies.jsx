@@ -5,6 +5,7 @@ import { Audio } from 'react-loader-spinner'
 import { DataContext } from "../context/DataContext";
 import { Link, useNavigate } from "react-router-dom";
 import ItemDetails from "./ItemDetails";
+import { motion } from "framer-motion";
 
 function Movies() {
   const { searchMovies, fetchPopularMovies , fetchNowPlayingMovies, fetchTopRatedMovies, fetchUpcomingMovies, searchM, setSearchM,
@@ -65,13 +66,24 @@ function Movies() {
         </div>
       </div>
 
-      <div className="container list_wrapper">
+      <div className="container list_wrapper"
+     
+      >
         <div className="row">
-          {isLoaded ? (Movies.map((movie) => {
+          {isLoaded ? (Movies.map((movie) => {     
+  
 
             return (
               <>
-                <Link to="/details" state={{id: movie?.id, tv: false}} className="movie_card" id="tomb">
+                <motion.div
+                   initial={{ opacity: 0, scale: 0.5 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   transition={{ duration: 0.5 }}
+                  >
+                <Link to="/details" state={{id: movie?.id, tv: false}} className="movie_card" id="tomb"
+                 
+                >
+                
                   <div className="info_section">
                     {console.log(IMG_MAIN_URL + movie.backdrop_path)}
                     <div className="movie_header">
@@ -93,6 +105,7 @@ function Movies() {
                     <div className="movie_social">
                     </div>
                   </div>
+                
                   <div
                     className="blur_back tomb_back"
                     style={{
@@ -101,6 +114,7 @@ function Movies() {
                     }}
                   ></div>
                 </Link>
+                </motion.div>
               </>
             );
           })) : <Audio

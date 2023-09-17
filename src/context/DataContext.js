@@ -15,7 +15,7 @@ const DataProvider = ({ children }) => {
 
 
     const movieDetails = (id) => {
-
+setIsLoaded(false);
         const options = {
             method: 'GET',
             headers: {
@@ -26,7 +26,7 @@ const DataProvider = ({ children }) => {
           
           fetch(`${BASE_URL}movie/${id}?language=en-US`, options)
             .then(response => response.json())
-            .then(data => setMovieItem(data))
+            .then(data => {setMovieItem(data); setIsLoaded(true)})
             .catch(err => console.error(err));
     }
 
