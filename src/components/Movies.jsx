@@ -31,12 +31,20 @@ function Movies() {
   return (
     <>
       <Header />
-      <div className="container mt-3" style={{
+      <div className="container outer_wrp mt-3">
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >WEBFLIX</motion.h1>
+        <h3
+       
+        >Only place for all your entertainment needs</h3>
+        <div className="row justify-content-between"  style={{
         background: 'linear-gradient(45deg, #9f0404, transparent)',
         padding: '0.3em 1em',
         borderRadius: "40px"
       }}>
-        <div className="row justify-content-between">
           <ul className="nav nav-tabs flex-column flex-sm-row d-flex" style={{ width: 'auto' }}>
             <li className="nav-item">
               <a className="nav-link" onClick={fetchPopularMovies}>
@@ -117,8 +125,9 @@ function Movies() {
                 </motion.div>
               </>
             );
-          })) : <Audio
-            height="80"
+          })) : 
+          <Audio
+            height="100vh"
             width="80"
             radius="9"
             color='red'

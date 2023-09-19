@@ -24,8 +24,7 @@ function Header() {
               </div>
           </div>
         </div>
-        <h1>WEBFLIX</h1>
-        <h3>Only place for all your entertainment needs</h3>
+      
         {/* <div className="navigation">
           <ul className="flex-column flex-sm-row">
             <li>

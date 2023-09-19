@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800");
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Croissant+One&display=swap');
 @import-normalize;
 * {
   box-sizing: border-box;
@@ -131,20 +132,7 @@ gap: 1rem;
 
 
   
-  h1 {
-    font-size: clamp(2.5rem, 12vw, 7.5rem);
-    text-align: center;
-    font-weight: 900;
-    color: red;
-    letter-spacing: 6px;
-  }
-  h3 {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    text-align: center;
-    color: rgb(198 198 198 / 58%);
-    font-family: "Caveat", cursive;
-    font-weight: 100;
-  }
+
 }
 .mv-search{
   padding: 0.4em;
@@ -164,6 +152,28 @@ gap: 1rem;
 * ==========================================
 *
 */
+.outer_wrp{
+  h1 {
+    font-size: clamp(2.5rem, 4vw, 5.5rem);
+    text-align: center;
+    font-weight: 900;
+    color: red;
+    letter-spacing: 6px;
+  }
+  h3 {
+    font-size: clamp(1rem, 2vw, 3.5rem);
+    text-align: center;
+    color: rgb(198 198 198 / 58%);
+    font-family: "Caveat", cursive;
+    font-weight: 100;
+  }
+}
+.movie__bg{
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .text-small {
   font-size: 0.9rem !important;
 }
@@ -323,6 +333,38 @@ gap: 1rem;
 //   font-weight: 900;
 //   font-family: sans-serif;
 // }
+.det__outer{
+  position: absolute;
+    top: 21%;
+    left: 7%;
+.genres{
+  padding-bottom: 1rem;
+span{
+  background: black;
+  display: inline-block;
+  border: 1px solid red;
+  padding: 2px 10px;
+  border-radius: 19px;
+  font-size: 12px;
+  font-weight: 200;
+  color: #ffffff87;
+}
+}
+p{
+  color: #a1a1a1;
+}
+}
+
+.movie__title{
+  margin: unset;
+  font-size: clamp(3rem, 3vw, 5rem);
+  font-family: 'Croissant One';
+  color: #ffffffc9;
+  white-space: nowrap;
+}
+.runtime__wrapper{
+  
+}
 
 @media screen and (min-width: 768px) {
   .movie_header {
