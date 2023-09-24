@@ -169,7 +169,7 @@ gap: 1rem;
   }
 }
 .movie__bg{
-  height: 100vh;
+  height: 85vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -334,12 +334,12 @@ gap: 1rem;
 //   font-family: sans-serif;
 // }
 .det__outer{
-  position: absolute;
+  // position: absolute;
     top: 21%;
     left: 7%;
 .genres{
-  padding-bottom: 1rem;
-  margin-top: 4rem;
+  padding-bottom: .25rem;
+  margin-top: 1rem;
 span{
   background: black;
   display: inline-block;
@@ -365,6 +365,9 @@ p{
 }
 .runtime__wrapper{
   
+}
+.over__view{
+  font-size: 12px;
 }
 
 @media screen and (min-width: 768px) {

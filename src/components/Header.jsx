@@ -8,7 +8,7 @@ function Header() {
     <>
       <div className="header" style={{ background: 'linear-gradient(45deg, #000000 0%, #ff000030 51%, #000056 100%)'}}>
         <div className="container-fluid px-5 py-3 ">
-          <div className="topbar d-flex justify-content-between">
+          <div className="topbar d-flex flex-column flex-md-row align-items-center align-items-md-start justify-content-between">
             <div className="" style={{cursor: "pointer"}} onClick={()=> navigate("/")}><span className="logo_head">webflix</span></div>
 
 

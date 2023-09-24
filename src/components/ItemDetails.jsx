@@ -26,12 +26,12 @@ function ItemDetails() {
 
         <framerMotion.div className="container-fluid movie__bg mt-3"
           style={{ backgroundImage: `linear-gradient(45deg, rgb(0 0 0 / 91%), rgb(0 0 0 / 67%)), url('${IMG_MAIN_URL + movieItem.backdrop_path}')` }}
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: .5 }}
 
         >
-          <div className="row">
+          <div className="row justify-content-center pt-5">
             {/* <div className="col-md-4">
           <img
             src={IMG_MAIN_URL + movieItem.poster_path}
@@ -46,7 +46,12 @@ function ItemDetails() {
           <p>{movieItem.overview}</p>
         </div> */}
 
-            <div className="col-md-4 det__outer">
+
+            <div className="d-flex justify-content-center" style={{width: "min(200px, 60vw)"}}>
+              <img src={IMG_MAIN_URL + movieItem.poster_path} className='img-fluid rounded' style={{boxShadow: "0px 4px 5px 0px #6b0000"}}  alt="" />
+            </div>
+            
+            <div className="col-md-12 px-2 pt-3 px-md-5 det__outer d-flex justify-content-center flex-column align-items-center">
               <div className="d-flex genres gap-2">
                {movieItem.genres?.length > 0 ? 
                movieItem.genres.map((genre) => 
@@ -61,7 +66,7 @@ function ItemDetails() {
                 <span>{movieItem.vote_count} votes .</span>
                 <span>{!movieItem.adult ? "U/A" : "A"}</span></div>
 
-                <p className='pt-3' style={{maxWidth: "45ch"}}>
+                <p className='pt-5 over__view' style={{width: "min(62vw, 78ch)"}}>
             {movieItem.overview}
             </p>
             </div>
