@@ -6,7 +6,7 @@ function Header() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="header pb-3" style={{ background: 'linear-gradient(45deg, #000000 0%, #ff000030 51%, #000056 100%)'}}>
+      <div className="header" style={{ background: 'linear-gradient(45deg, #000000 0%, #ff000030 51%, #000056 100%)'}}>
         <div className="container-fluid px-5 py-3 ">
           <div className="topbar d-flex justify-content-between">
             <div className="" style={{cursor: "pointer"}} onClick={()=> navigate("/")}><span className="logo_head">webflix</span></div>

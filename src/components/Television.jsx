@@ -3,11 +3,12 @@ import Header from "./Header";
 import { DataContext } from "../context/DataContext";
 import { Link } from "react-router-dom";
 import { motion as tvMotion } from "framer-motion";
+import { Audio } from "react-loader-spinner";
 
 function Television() {
   const [SearchT, setSearchT] = useState([]);
 
-const { fetchTopRatedTv,fetchTodayTv, fetchPopularTv, searchTv, tv, setTv, IMG_MAIN_URL, tvClick, setTvClick} = useContext(DataContext)
+const { fetchTopRatedTv,fetchTodayTv, fetchPopularTv, searchTv, tv, setTv, IMG_MAIN_URL, tvClick, setTvClick, isLoaded, setIsLoaded} = useContext(DataContext)
 
 const setInputValue = (e) => {
     setSearchT(e, e.target.value);
@@ -68,7 +69,12 @@ const setInputValue = (e) => {
 
       <div className="container list_wrapper">
         <div className="row">
-          {tv.map((item) => {
+
+          
+          { isLoaded ? 
+          
+          
+          tv.map((item) => {
             return (
               <>
                <tvMotion.div
@@ -116,7 +122,15 @@ const setInputValue = (e) => {
                 </tvMotion.div>
               </>
             );
-          })}
+          }) :  <Audio
+          height="100vh"
+          width="80"
+          radius="9"
+          color='red'
+          ariaLabel='three-dots-loading'
+          wrapperStyle
+          wrapperClass
+        /> }
         </div>
       </div>
     </>

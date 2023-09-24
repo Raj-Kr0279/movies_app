@@ -61,7 +61,7 @@ function ItemDetails() {
                 <span>{movieItem.vote_count} votes .</span>
                 <span>{!movieItem.adult ? "U/A" : "A"}</span></div>
 
-                <p>
+                <p className='pt-3' style={{maxWidth: "45ch"}}>
             {movieItem.overview}
             </p>
             </div>
