@@ -19,7 +19,7 @@ function ItemDetails() {
   useEffect(() => {
     tv ? tvDetails(id) : movieDetails(id)
   }, [id])
-  console.log(movieItem, "tvlcic")
+  // console.log(movieItem, "tvlcic")
   return (
     <>
       <Header />
