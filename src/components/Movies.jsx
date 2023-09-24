@@ -40,7 +40,7 @@ function Movies() {
         <h3
        
         >Only place for all your entertainment needs</h3>
-        <div className="row justify-content-between"  style={{
+        <div className="row justify-content-between align-items-center mx-3"  style={{
         background: 'linear-gradient(45deg, #9f0404, transparent)',
         padding: '0.3em 1em',
         borderRadius: "40px"

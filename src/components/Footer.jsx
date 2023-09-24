@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className="container-fluid footer" style={{background: "linear-gradient(45deg, #9d0303, #ffffff00)"}}>
         <div className="copyright text-center">
-            <p>All rights reserved @Webflix.co.in. Contact for further enquiries abc@email.com</p>
+            <p>Designed with ❤️ by Rajendra. Contact via <a className="" href='mailto:kumarrajendra8802@gmail.com'>mail</a> for enquiries</p>
         </div>
     </div>
   )

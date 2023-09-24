@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Header from './Header';
 import { Audio } from 'react-loader-spinner';
 import { motion as framerMotion } from "framer-motion";
+import dummy from "../Assets/dummy_poster.png"
 
 function ItemDetails() {
   const { IMG_MAIN_URL, movieItem, movieDetails, setMovieItem, tvClick, setTvClick, tvDetails, isLoaded, motion
@@ -48,7 +49,9 @@ function ItemDetails() {
 
 
             <div className="d-flex justify-content-center" style={{width: "min(200px, 60vw)"}}>
-              <img src={IMG_MAIN_URL + movieItem.poster_path} className='img-fluid rounded' style={{boxShadow: "0px 4px 5px 0px #6b0000"}}  alt="" />
+              <img src={movieItem.poster_path ? IMG_MAIN_URL + movieItem.poster_path : dummy} className='img-fluid rounded  '
+              //  style={{boxShadow: "0px 4px 5px 0px #6b0000"}}
+                 alt="" />
             </div>
             
             <div className="col-md-12 px-2 pt-3 px-md-5 det__outer d-flex justify-content-center flex-column align-items-center">
